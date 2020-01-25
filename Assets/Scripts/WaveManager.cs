@@ -24,7 +24,6 @@ public class WaveManager : MonoBehaviour
         CHECK_ENNEMIS_DEATH
     }
     State state = State.ORIGINAL_WAVE;
-    // Update is called once per frame
     void Update()
     {
         switch(state)
@@ -45,7 +44,6 @@ public class WaveManager : MonoBehaviour
                 state = State.SPAWN_ENNEMIS;
                 break;
             case State.SPAWN_ENNEMIS:
-               // Debug.Log(ennemiToSpawn);
                 for (int i = 0; i < ennemiToSpawn; i++)
                 {
                     GameObject ennemi = Instantiate(prefabEnnemi, ennemiSpawnPoint);
@@ -54,7 +52,6 @@ public class WaveManager : MonoBehaviour
                 state = State.CHECK_ENNEMIS_DEATH;
                 break;
             case State.CHECK_ENNEMIS_DEATH:
-               // Debug.Log(ennemiNumber);
                 if (allDead)
                 {
                     waveTime -= Time.deltaTime;
@@ -64,10 +61,8 @@ public class WaveManager : MonoBehaviour
                     }
                 }
                 break;
-
         }
     }
-
     public void ennemiDeath()
     {
         ennemiNumber--;

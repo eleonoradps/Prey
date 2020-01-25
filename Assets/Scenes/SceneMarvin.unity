@@ -600,7 +600,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 214, y: -24}
+  m_AnchoredPosition: {x: 231, y: -23}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627644161
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ennemiToSpawn: 0
-  waveTimer: 0
+  waveTimer: 5
   prefabEnnemi: {fileID: 8777251766331560813, guid: eb5f388dc57553c4b84a249d4eae2462,
     type: 3}
   ennemiSpawnPoint: {fileID: 1928891636}
