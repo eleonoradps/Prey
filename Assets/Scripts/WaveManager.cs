@@ -11,6 +11,7 @@ public class WaveManager : MonoBehaviour
     float waveTime = 0;
     [SerializeField] GameObject prefabEnnemi;
     [SerializeField] Transform ennemiSpawnPoint;
+    [SerializeField] WaveDisplayer waveDisplayer;
     bool allDead = false;
     void Start()
     {
@@ -21,8 +22,6 @@ public class WaveManager : MonoBehaviour
         PREPARING_NEXT_WAVE,
         SPAWN_ENNEMIS,
         CHECK_ENNEMIS_DEATH
-
-
     }
     State state = State.ORIGINAL_WAVE;
     // Update is called once per frame
@@ -32,12 +31,14 @@ public class WaveManager : MonoBehaviour
         {
             case State.ORIGINAL_WAVE:
                 currentWave = 1;
+                waveDisplayer.DisplayCurrentWave(currentWave);
                 ennemiToSpawn = 1;
                 waveTime += waveTimer;
                 state = State.SPAWN_ENNEMIS;
                 break;
             case State.PREPARING_NEXT_WAVE:
                 currentWave += 1;
+                waveDisplayer.DisplayCurrentWave(currentWave);
                 ennemiToSpawn++;
                 waveTime += waveTimer;
                 allDead = false;
@@ -66,6 +67,7 @@ public class WaveManager : MonoBehaviour
 
         }
     }
+
     public void ennemiDeath()
     {
         ennemiNumber--;
