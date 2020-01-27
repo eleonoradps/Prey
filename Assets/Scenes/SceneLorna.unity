@@ -348,6 +348,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 704520891, guid: 5661b70cd78be2b4dad26cfdc104a82f, type: 3}
+      propertyPath: m_Name
+      value: PlayerSides
+      objectReference: {fileID: 0}
+    - target: {fileID: 704520893, guid: 5661b70cd78be2b4dad26cfdc104a82f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.010271788
+      objectReference: {fileID: 0}
+    - target: {fileID: 704520893, guid: 5661b70cd78be2b4dad26cfdc104a82f, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8423109
+      objectReference: {fileID: 0}
+    - target: {fileID: 704520893, guid: 5661b70cd78be2b4dad26cfdc104a82f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.13021135
+      objectReference: {fileID: 0}
+    - target: {fileID: 704520893, guid: 5661b70cd78be2b4dad26cfdc104a82f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.34108162
+      objectReference: {fileID: 0}
     - target: {fileID: 1698218152257791308, guid: 5661b70cd78be2b4dad26cfdc104a82f,
         type: 3}
       propertyPath: m_LocalPosition.x
