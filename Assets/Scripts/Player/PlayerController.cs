@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D body;
     private Vector2 direction;
-    [SerializeField] private const int jumpHeight = 5;
+    [SerializeField] private int jumpHeight = 5;
     bool canJump = false;
     [SerializeField] private float speed = 2;
     Animator playerAnimator;
@@ -91,13 +91,12 @@ enum State
         {
             body.velocity = new Vector2(body.velocity.x, jumpHeight);
         }
-        Debug.Log("1");
+
         if (horizontalSpeed < 0 && !facingLeft)
         {
             facingLeft = true;
             facingRight = false;
             playerAnimator.transform.Rotate(0, 180, 0);
-            Debug.Log("IC");
         }
         if (horizontalSpeed > 0 && !facingRight)
         {

@@ -10,7 +10,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] float waveTimer = 0;
     float waveTime = 0;
     [SerializeField] GameObject prefabEnnemi;
-    [SerializeField] Transform ennemiSpawnPoint;
+    //[SerializeField] Transform ennemiSpawnPoint;
+    Vector3 spawnPosition;
     [SerializeField] WaveDisplayer waveDisplayer;
     bool allDead = false;
     void Start()
@@ -46,7 +47,8 @@ public class WaveManager : MonoBehaviour
             case State.SPAWN_ENNEMIS:
                 for (int i = 0; i < ennemiToSpawn; i++)
                 {
-                    GameObject ennemi = Instantiate(prefabEnnemi, ennemiSpawnPoint);
+                    spawnAttributor();
+                    GameObject ennemi = Instantiate(prefabEnnemi,spawnPosition,Quaternion.identity);
                     ennemiNumber++;
                 }
                 state = State.CHECK_ENNEMIS_DEATH;
@@ -62,6 +64,12 @@ public class WaveManager : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    void spawnAttributor()
+    {
+        spawnPosition = new Vector3(Random.Range(-7.8f,7.6f ), Random.Range(-4.0f,4.4f), 0);
+        Debug.Log(spawnPosition);
     }
     public void ennemiDeath()
     {
