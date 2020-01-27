@@ -37,4 +37,12 @@ public class ennemi : MonoBehaviour
                 break;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.layer == LayerMask.NameToLayer("PlayerSides"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
