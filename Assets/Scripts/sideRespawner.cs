@@ -9,6 +9,7 @@ public class sideRespawner : MonoBehaviour
     [SerializeField] Transform rightSide;
     Vector2 leftRespawn;
     Vector2 rightRespawn;
+    float cooldown = 0.5f;
 
 
     // Start is called before the first frame update
