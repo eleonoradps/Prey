@@ -32,10 +32,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     //TODO : add this to enemy
