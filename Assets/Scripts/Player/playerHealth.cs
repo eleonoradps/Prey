@@ -31,12 +31,12 @@ public class playerHealth : MonoBehaviour
     {
         transform.position = new Vector3(startPositionX, startPositionY);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            TakeDamage();
-            RespawnPlayer();
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+    //    {
+    //        TakeDamage();
+    //        RespawnPlayer();
+    //    }
+    //}
 }

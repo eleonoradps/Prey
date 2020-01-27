@@ -14,7 +14,8 @@ public class ennemi : MonoBehaviour
     enum State
     {
         ALIVE,
-        DEAD
+        DEAD,
+        DESTROY
     }
     State state = State.ALIVE;
     // Update is called once per frame
@@ -23,26 +24,27 @@ public class ennemi : MonoBehaviour
         switch(state)
         {
             case State.ALIVE:
-                timer -= Time.deltaTime;
-                // Debug.Log(timer);
-                if (timer <= 0)
-                {
-                    WaveManager waveManager = FindObjectOfType<WaveManager>();
-                    waveManager.ennemiDeath();
-                    state = State.DEAD;
-                }
                 break;
             case State.DEAD:
+                WaveManager waveManager = FindObjectOfType<WaveManager>();
+                waveManager.ennemiDeath();
+                state = State.DESTROY;
+                break;
+            case State.DESTROY:
                 Destroy(gameObject);
                 break;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    public void takeDamage()
     {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("PlayerSides"))
-        {
-            Destroy(gameObject);
-        }
+        state = State.DEAD;
     }
+    //private void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    if (collider.gameObject.layer == LayerMask.NameToLayer("PlayerSides"))
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

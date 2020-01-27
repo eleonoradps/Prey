@@ -124,9 +124,10 @@ enum State
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "ennemy" && attackReady)
+        if(collision.gameObject.tag == "enemy" && attackReady)
         {
-
+            ennemi ennemi = collision.gameObject.GetComponent<ennemi>();
+            ennemi.takeDamage();
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
