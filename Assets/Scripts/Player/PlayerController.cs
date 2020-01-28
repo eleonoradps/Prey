@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer angry2;
     float attackDuration;
     [SerializeField] float durationTime;
+    [SerializeField] AudioSource boarSound;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -83,6 +84,7 @@ enum State
                 }
                 break;
             case State.DAMAGING_CHARGE:
+                boarSound.Play();
                 attackReady = true;
                 attackDuration -= Time.deltaTime;
                 if(attackDuration<=0)

@@ -78,6 +78,8 @@ public class ennemi : MonoBehaviour
     }
     private void OnBecameInvisible()
     {
+        WaveManager waveManager = FindObjectOfType<WaveManager>();
+        waveManager.ennemiDeath();
         Destroy(gameObject);
     }
     public void takeDamage()
