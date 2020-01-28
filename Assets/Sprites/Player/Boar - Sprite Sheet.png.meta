@@ -52,16 +52,16 @@ TextureImporter:
     second: Boar - Sprite Sheet_15
   - first:
       213: -3566366130555645519
-    second: Boar - Sprite Sheet_16
+    second: death1
   - first:
       213: 1066898582864340874
-    second: Boar - Sprite Sheet_17
+    second: death2
   - first:
       213: 1232890389952819720
-    second: Boar - Sprite Sheet_18
+    second: death3
   - first:
       213: 2915656976829805163
-    second: Boar - Sprite Sheet_19
+    second: death4
   - first:
       213: 3300292419527496683
     second: turn1
@@ -632,7 +632,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boar - Sprite Sheet_16
+      name: death1
       rect:
         serializedVersion: 2
         x: 1
@@ -653,7 +653,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boar - Sprite Sheet_17
+      name: death2
       rect:
         serializedVersion: 2
         x: 32
@@ -674,7 +674,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boar - Sprite Sheet_18
+      name: death3
       rect:
         serializedVersion: 2
         x: 64
@@ -695,7 +695,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boar - Sprite Sheet_19
+      name: death4
       rect:
         serializedVersion: 2
         x: 96

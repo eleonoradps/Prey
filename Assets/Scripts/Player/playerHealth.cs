@@ -7,7 +7,7 @@ public class playerHealth : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     private int enemyDamage = 1;
-
+    Animator anim;
     private float startPositionX = -2.57f;
     private float startPositionY = -3.65f;
     
@@ -16,6 +16,7 @@ public class playerHealth : MonoBehaviour
     {
         startPositionX = gameObject.transform.position.x;
         startPositionY = gameObject.transform.position.y;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,12 +24,14 @@ public class playerHealth : MonoBehaviour
     {
         
     }
-    private void TakeDamage()
+    public void TakeDamage() //ici le player prend vraiment des degats
     {
         currentHealth -= enemyDamage;
+
     }
-    private void RespawnPlayer()
+    public void RespawnPlayer()
     {
+        anim.SetBool("isDead", false);
         transform.position = new Vector3(startPositionX, startPositionY);
     }
     //private void OnCollisionEnter2D(Collision2D collision)

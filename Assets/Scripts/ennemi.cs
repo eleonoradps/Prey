@@ -9,6 +9,8 @@ public class ennemi : MonoBehaviour
     Rigidbody2D body;
     Vector2 direction;
    [SerializeField] float speed;
+    Animator animator;
+    float movement = 0;
     bool canMove = false;
     bool switchDirection = false;
     bool startedSwitching = false;
@@ -19,6 +21,7 @@ public class ennemi : MonoBehaviour
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     enum State
     {
@@ -40,24 +43,27 @@ public class ennemi : MonoBehaviour
             case State.ALIVE:
                 if (!startedSwitching&& canMove)
                 {
-                    direction = new Vector2(0.5f, body.velocity.y);
+                    direction = new Vector2(1f, body.velocity.y);
+                    animator.SetBool("run", true);
                 }
                 if (switchDirection && facingRight)
                 {
                     Debug.Log("ICI");
-                    direction = new Vector2(-0.5f, body.velocity.y);
+                    direction = new Vector2(-1f, body.velocity.y);
                     facingRight = false;
                     facingLeft = true;
                     switchDirection = false;
                     startedSwitching = true;
+                    sprite.flipX = true;
                 }
                 if (switchDirection && facingLeft)
                 {
-                    direction = new Vector2(0.5f, body.velocity.y);
+                    direction = new Vector2(1f, body.velocity.y);
                     facingRight = true;
                     facingLeft = false;
                     switchDirection = false;
                     startedSwitching = true;
+                    sprite.flipX = false;
                 }
                 break;
             case State.DEAD:
@@ -70,7 +76,10 @@ public class ennemi : MonoBehaviour
                 break;
         }
     }
-
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
     public void takeDamage()
     {
         state = State.DEAD;

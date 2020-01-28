@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D body;
+    playerHealth Health;
     private Vector2 direction;
     [SerializeField] private int jumpHeight = 5;
     bool canJump = false;
@@ -21,10 +22,13 @@ public class PlayerController : MonoBehaviour
     bool attackReady = false;
     [SerializeField] SpriteRenderer angry1;
     [SerializeField] SpriteRenderer angry2;
+    float attackDuration;
+    [SerializeField] float durationTime;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        Health = GetComponent<playerHealth>();
         facingRight = true;
         facingLeft = false;
     }
@@ -50,6 +54,7 @@ enum State
         {
             case State.IDLE:
                 attackTimer = attackTime;
+                attackDuration = durationTime;
                 attackReady = false;
                 angry2.enabled = false;
                 angry1.enabled = false;
@@ -79,12 +84,17 @@ enum State
                 break;
             case State.DAMAGING_CHARGE:
                 attackReady = true;
-                angry1.enabled = true;
-                angry2.enabled = true;
+                attackDuration -= Time.deltaTime;
+                if(attackDuration<=0)
+                {
+                    state = State.IDLE;
+                }
                 if(Input.GetKeyUp("x"))
                 {
                     state = State.IDLE;
                 }
+                angry1.enabled = true;
+                angry2.enabled = true;
                 break;
         }
         if (Input.GetKeyDown("space") && canJump)
@@ -105,28 +115,18 @@ enum State
             facingLeft = false;
             playerAnimator.transform.Rotate(0, 180, 0);
         }
-        //attackAcceleration();
     }
-
-    //void attackAcceleration()
-    //{
-    //   if(Input.GetKeyDown("x"))
-    //    {
-    //        speed = 4;
-    //    }
-    //   if(Input.GetKeyUp("x"))
-    //    {
-    //        speed = 3;
-    //    }
-          
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "enemy" && attackReady)
         {
             ennemi ennemi = collision.gameObject.GetComponent<ennemi>();
             ennemi.takeDamage();
+        }
+        else if(collision.gameObject.tag == "enemy" && !attackReady) // le player se prend les degats ici
+        {
+            Health.TakeDamage();
+            playerAnimator.SetBool("isDead", true);
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -140,20 +140,4 @@ enum State
     {
         canJump = false;
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-
-    //TODO : add this to enemy
-    //private void OnTriggerEnter2D(Collider2D collider)
-    //{
-    //    if (collider.gameObject.layer == LayerMask.NameToLayer("PlayerFeet"))
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
 }
