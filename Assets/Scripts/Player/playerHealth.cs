@@ -1,15 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class playerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
+    [SerializeField] private int maxHealth = 4;
     [SerializeField] private int currentHealth;
     private int enemyDamage = 1;
     Animator anim;
     private float startPositionX = -2.57f;
     private float startPositionY = -3.65f;
+
+    [SerializeField] private TextMeshProUGUI textPlayerHealth;
+
     
     // Start is called before the first frame update
     void Start()
@@ -17,6 +23,9 @@ public class playerHealth : MonoBehaviour
         startPositionX = gameObject.transform.position.x;
         startPositionY = gameObject.transform.position.y;
         anim = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        textPlayerHealth.text = currentHealth.ToString();
     }
 
     // Update is called once per frame
@@ -27,6 +36,12 @@ public class playerHealth : MonoBehaviour
     public void TakeDamage() //ici le player prend vraiment des degats
     {
         currentHealth -= enemyDamage;
+        textPlayerHealth.text = currentHealth.ToString();
+
+        if(currentHealth <= 0)
+        {
+            SceneManager.LoadScene("DeathScene");
+        }
 
     }
     public void RespawnPlayer()
