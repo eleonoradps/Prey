@@ -13,8 +13,13 @@ public class MenuManager : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("SceneMarvin");
+        Time.timeScale = 1f;
     }
 
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("GameMenu");
+    }
     public void QuitGame()
     {
         Application.Quit();
