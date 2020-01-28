@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -4952689729569383959
     second: tile_jungle_tree_dark_5
+  - first:
+      213: -4979371175997091816
+    second: tile_jungle_tree_dark_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -253,7 +256,7 @@ TextureImporter:
         width: 66
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,6 +264,27 @@ TextureImporter:
       bones: []
       spriteID: 4a7d2d95d37ff424285c31291d2cf7e4
       internalID: -4952689729569383959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_jungle_tree_dark_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 169
+        width: 66
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916a25bbd3da34244acf90dcd8532479
+      internalID: -4979371175997091816
       vertices: []
       indices: 
       edges: []
