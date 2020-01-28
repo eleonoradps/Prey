@@ -3709,6 +3709,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3572434336760693214, guid: 5661b70cd78be2b4dad26cfdc104a82f,
+        type: 3}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5861579862710538351, guid: 5661b70cd78be2b4dad26cfdc104a82f,
         type: 3}
       propertyPath: jumpHeight

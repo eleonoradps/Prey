@@ -69,7 +69,7 @@ public class ennemi : MonoBehaviour
             case State.DEAD:
                 WaveManager waveManager = FindObjectOfType<WaveManager>();
                 waveManager.ennemiDeath();
-                state = State.DESTROY;
+                animator.SetBool("isDead", true);
                 break;
             case State.DESTROY:
                 Destroy(gameObject);
@@ -96,6 +96,10 @@ public class ennemi : MonoBehaviour
         {
             canMove = true;
         }
+    }
+    void destroy()
+    {
+        state = State.DESTROY;
     }
     //private void OnTriggerEnter2D(Collider2D collider)
     //{
