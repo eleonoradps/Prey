@@ -15,14 +15,14 @@ public class sideRespawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        leftRespawn = new Vector2(leftSide.position.x, player.transform.position.y);
-        rightRespawn = new Vector2(rightSide.position.x, player.transform.position.y);
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        leftRespawn = new Vector2(leftSide.position.x, player.transform.position.y);
+        rightRespawn = new Vector2(rightSide.position.x, player.transform.position.y);
         //Debug.Log(leftRespawn);
     }
     private void OnTriggerEnter2D(Collider2D collision)

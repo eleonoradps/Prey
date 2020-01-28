@@ -6,10 +6,19 @@ public class ennemi : MonoBehaviour
 {
     [SerializeField]float timer;
     SpriteRenderer sprite;
+    Rigidbody2D body;
+    Vector2 direction;
+   [SerializeField] float speed;
+    bool canMove = false;
+    bool switchDirection = false;
+    bool startedSwitching = false;
+    bool facingRight = true;
+    bool facingLeft = false;
     // Start is called before the first frame update
     void Start()
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
+        body = GetComponent<Rigidbody2D>();
     }
     enum State
     {
@@ -18,12 +27,38 @@ public class ennemi : MonoBehaviour
         DESTROY
     }
     State state = State.ALIVE;
+
+    private void FixedUpdate()
+    {
+        body.velocity = new Vector2(direction.x * speed, body.velocity.y);
+    }
     // Update is called once per frame
     void Update()
     {
         switch(state)
         {
             case State.ALIVE:
+                if (!startedSwitching&& canMove)
+                {
+                    direction = new Vector2(0.5f, body.velocity.y);
+                }
+                if (switchDirection && facingRight)
+                {
+                    Debug.Log("ICI");
+                    direction = new Vector2(-0.5f, body.velocity.y);
+                    facingRight = false;
+                    facingLeft = true;
+                    switchDirection = false;
+                    startedSwitching = true;
+                }
+                if (switchDirection && facingLeft)
+                {
+                    direction = new Vector2(0.5f, body.velocity.y);
+                    facingRight = true;
+                    facingLeft = false;
+                    switchDirection = false;
+                    startedSwitching = true;
+                }
                 break;
             case State.DEAD:
                 WaveManager waveManager = FindObjectOfType<WaveManager>();
@@ -39,6 +74,17 @@ public class ennemi : MonoBehaviour
     public void takeDamage()
     {
         state = State.DEAD;
+    }
+   public void changeDirection()
+    {
+        switchDirection = true;
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "ground")
+        {
+            canMove = true;
+        }
     }
     //private void OnTriggerEnter2D(Collider2D collider)
     //{
